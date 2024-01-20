@@ -1,0 +1,104 @@
+// // Copyright (c) FIRST and other WPILib contributors.
+// // Open Source Software; you can modify and/or share it under the terms of
+// // the WPILib BSD license file in the root directory of this project.
+
+// package frc.robot.subsystems;
+
+// import com.revrobotics.CANSparkMax;
+// import com.revrobotics.RelativeEncoder;
+
+// import frc.robot.Constants;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+// public class SpinnersSubsystem extends SubsystemBase {
+//   /** Creates a new SpinnersSubsystem. */
+
+//   private CANSparkMax m_spinMotorFront;
+//   private CANSparkMax m_spinMotorBack;
+//   private RelativeEncoder m_spinEncoderFront;
+//   private RelativeEncoder m_spinEncoderBack;
+//   private boolean m_slowMode = false;
+
+//   public SpinnersSubsystem() {
+
+//     m_spinMotorFront = new CANSparkMax(Constants.ArmSpinConstants.kSpinMotorFrontID, MotorType.kBrushless);
+//     m_spinMotorBack = new CANSparkMax(Constants.ArmSpinConstants.kSpinMotorBackID, MotorType.kBrushless);
+
+//     m_spinEncoderFront = m_spinMotorFront.getEncoder();
+//     m_spinEncoderBack = m_spinMotorBack.getEncoder();
+
+//     m_spinMotorBack.follow(m_spinMotorFront);
+//     m_spinMotorBack.setInverted(true);
+//   }
+
+//   public void resetEncoders() {
+//     m_spinEncoderFront.setPosition(0);
+//     m_spinEncoderBack.setPosition(0);
+//   }
+
+//   public void swapSlow() {
+//     m_slowMode = !m_slowMode;
+//   }
+
+//   public boolean isSlow() {
+//     return m_slowMode;
+//   }
+
+//   public void spinSlow(boolean direction) {
+
+//     if (direction) {
+//       m_spinMotorFront.set(Constants.ArmSpinConstants.kSpiningSpeedSlow);
+//     } else {
+//       m_spinMotorFront.set(-Constants.ArmSpinConstants.kSpiningSpeedSlow);
+//     }
+//   }
+
+//   public void spin(boolean direction) {
+
+//     if (direction) {
+//       m_spinMotorFront.set(Constants.ArmSpinConstants.kSpiningSpeed);
+//     } else {
+//       m_spinMotorFront.set(-Constants.ArmSpinConstants.kSpiningSpeed);
+//     }
+//   }
+
+//   public void spinSemiFast(boolean direction) {
+
+//     if (direction) {
+//       m_spinMotorFront.set(Constants.ArmSpinConstants.kSpiningSpeed);
+//     } else {
+//       m_spinMotorFront.set(-.6);
+//     }
+//   }
+
+//   public void spinFast(boolean direction) {
+
+//     if (direction) {
+//       m_spinMotorFront.set(Constants.ArmSpinConstants.kSpiningSpeed);
+//     } else {
+//       m_spinMotorFront.set(-.8);
+//     }
+//   }
+
+//   public void spinHalf(boolean direction) {
+
+//     if (direction) {
+//       m_spinMotorFront.set(.27);
+//     } else {
+//       m_spinMotorFront.set(-.27);
+//     }
+//   }
+
+//   public void stopSpin() {
+//     m_spinMotorFront.set(0);
+//     m_spinMotorBack.set(0);
+//   }
+
+//   @Override
+//   public void periodic() {
+//     SmartDashboard.putBoolean("Slow Spinners", m_slowMode);
+
+//     // This method will be called once per scheduler run
+//   }
+// }
